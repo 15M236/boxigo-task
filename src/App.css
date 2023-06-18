@@ -1,6 +1,6 @@
 .App {
   margin-left: 10rem;
-  text-align: center;
+  /* text-align: center; */
   width: 70%;
 }
 
@@ -33,11 +33,11 @@
 }
 
 
-.additional-details , .house-heading {
+.additional-details , .house-heading , .invnetory-heading {
   justify-content: space-between;
   display: flex;
 }
 
-.existing-house-details{
+.existing-house-details , .inventory-list{
   text-align: left;
 }

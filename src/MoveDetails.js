@@ -1,9 +1,13 @@
 import { Collapse } from '@mui/material'
 import React, { useState } from 'react'
+import IconButton from '@mui/material/IconButton'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function MoveDetails(props) {
   const [open , setOpen] = useState(false)
-    console.log(props.result)
+  const [inventoryOpen , setInventoryOpen] = useState(-1)
+    console.log(props.result.items.inventory)
     //props.result.old_house_additional_info
     const handleClick = () => {
       setOpen(!open)
@@ -51,7 +55,7 @@ export default function MoveDetails(props) {
         <button type='submit'>Quotes awaiting</button>
       </div>
       <div className='warning-section'>
-        <span class="material-symbols-outlined">warning</span>
+        <span className="material-symbols-outlined">warning</span>
         <p><b>Disclaimer :</b>Please update your move date before two days of shifting</p>
       </div>
     </div>
@@ -104,8 +108,41 @@ export default function MoveDetails(props) {
         </div>
       </section>
       <section className="inventory-details">
-        
+      <div className='invnetory-heading'>
+          <h6><b>Inventory Details</b></h6>
+          <button>Edit Inventory</button>
+        </div>
       </section>
+      <div className='inventory-list'>
+      {props.result.items.inventory.map((item,index) => {
+        return (
+          <React.Fragment>
+          <li key={index}>{item.displayName} {item.category.length}
+          <IconButton
+            onClick={() => setInventoryOpen(inventoryOpen === index ? -1 : index)}
+          >
+          {inventoryOpen === index ? (
+            <KeyboardArrowUpIcon/>
+          ) : (
+          <KeyboardArrowDownIcon/>
+          ) } 
+          </IconButton></li>
+          </React.Fragment>
+        )
+      })}
+      </div>
+      <Collapse in={inventoryOpen} timeout="auto" unmountOnExit>
+        {props.result.items.inventory.map((item) => {
+          return (
+            <>{item.category.map((list) => {
+              return (
+                <li>{list.displayName} {list.items.length}</li>
+              )
+            })}</>
+          )
+        })
+        }
+      </Collapse>
     </Collapse>
     </>
 

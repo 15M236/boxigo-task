@@ -21,9 +21,9 @@ function App() {
 
   return (
     <div className="App">
-      {results.map((result) => {
+      {results.map((result,index) => {
         return(
-          <MoveDetails result={result} /> 
+          <MoveDetails result={result} key={index} /> 
         )
       })} 
     </div>
