@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+}
+
+.moving-from{
+  margin-left: 20%;
+  text-align: left;
+}
+
+.first-row , .second-row , .bhk-section , .items-section , .distance-section , .date-section, .flexible-section, .warning-section{
+  display: flex;
+  align-content: space-around;
+}
+
+.sub-line{
+  line-height: normal;
+}
+.from-section , .to-section {
+  width: 40%;
+}
+.main-page {
+  margin-left: 10rem;
+  text-align: left;
+  width: 70%;
+}
+
+.second-row {
+  width: 85%;
+  justify-content:space-around ;
+}
