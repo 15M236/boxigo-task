@@ -1,5 +1,7 @@
 .App {
+  margin-left: 10rem;
   text-align: center;
+  width: 70%;
 }
 
 .moving-from{
@@ -7,7 +9,8 @@
   text-align: left;
 }
 
-.first-row , .second-row , .bhk-section , .items-section , .distance-section , .date-section, .flexible-section, .warning-section{
+.first-row , .second-row , .bhk-section , .items-section , .distance-section , 
+.date-section, .flexible-section, .warning-section, .existing-house-content, .new-house-content{
   display: flex;
   align-content: space-around;
 }
@@ -18,13 +21,23 @@
 .from-section , .to-section {
   width: 40%;
 }
-.main-page {
-  margin-left: 10rem;
+.main-page , .additional-info-text {
+  
   text-align: left;
-  width: 70%;
+  
 }
 
 .second-row {
   width: 85%;
   justify-content:space-around ;
+}
+
+
+.additional-details , .house-heading {
+  justify-content: space-between;
+  display: flex;
+}
+
+.existing-house-details{
+  text-align: left;
 }

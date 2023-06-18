@@ -1,13 +1,16 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Collapse } from '@mui/material'
+import React, { useState } from 'react'
+
 export default function MoveDetails(props) {
-    console.log(props.result.move_date_flexible)
-    const navigate = useNavigate()
+  const [open , setOpen] = useState(false)
+    console.log(props.result)
+    //props.result.old_house_additional_info
     const handleClick = () => {
-      console.log()
+      setOpen(!open)
     }
   return (
-    <div className='main-page'>
+    <>
+        <div className='main-page'>
       <div className='first-row'>
         <section className='from-section'>
           <p>From</p>
@@ -52,8 +55,59 @@ export default function MoveDetails(props) {
         <p><b>Disclaimer :</b>Please update your move date before two days of shifting</p>
       </div>
     </div>
-  
+    <Collapse in={open} timeout="auto" unmountOnExit>
+      <div className='additional-details'>
+        <h6><b>Additional Information</b></h6>
+        <button>Edit Additional info</button>
+      </div>
+      <div className='additional-info-text'>
+        {props.result.old_house_additional_info}{props.result.new_house_additional_info}
+      </div>
+      <section className='house-details'>
+        <div className='house-heading'>
+          <h6><b>House Details</b></h6>
+          <button>Edit House info</button>
+        </div>
+        <div className='existing-house-details'>
+          <h6><b>Exising House Details</b></h6>
+          <div className='existing-house-content'>
+          <div className='floor-details'>
+            <p>Floor No</p>
+            <p>{props.result.old_floor_no}</p>
+          </div>
+          <div className='elevator-details'>
+            <p>Elevator Available</p>
+            <p>{props.result.old_elevator_availability}</p>
+          </div>
+          <div className='distance-details'>
+          <p>Distance From Elevator / Staircase to truck</p>
+          <p>{props.result.old_parking_distance}</p>
+          </div>
+          </div>
+        </div>
+        <div className='existing-house-details'>
+          <h6><b>New House Details</b></h6>
+          <div className='new-house-content'>
+          <div className='floor-details'>
+            <p>Floor No</p>
+            <p>{props.result.new_floor_no}</p>
+          </div>
+          <div className='elevator-details'>
+            <p>Elevator Available</p>
+            <p>{props.result.new_elevator_availability}</p>
+          </div>
+          <div className='distance-details'>
+          <p>Distance From Elevator / Staircase to truck</p>
+          <p>{props.result.new_parking_distance}</p>
+          </div>
+          </div>
+        </div>
+      </section>
+      <section className="inventory-details">
+        
+      </section>
+    </Collapse>
+    </>
+
   )
 }
-
-//<span class="material-symbols-outlined">distance</span>
