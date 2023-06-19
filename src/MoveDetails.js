@@ -136,7 +136,11 @@ export default function MoveDetails(props) {
           return (
             <>{item.category.map((list) => {
               return (
-                <li>{list.displayName} {list.items.length}</li>
+                <>{list.displayName}{list.items.map((type) => {
+                  return (
+                    <li>{type.name} {type.type.length}</li>
+                  )
+                })}</>
               )
             })}</>
           )
